@@ -1,0 +1,57 @@
+doctype html
+html
+  head
+    title Learning App
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css")
+    style.
+      .perspective {
+        perspective: 1000px;
+      }
+      .card {
+        transform-style: preserve-3d;
+        transition: transform 0.8s;
+         border-radius: 15px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      
+      .card.flipped {
+        transform: rotateY(180deg);
+      }
+      .card-content {
+        backface-visibility: hidden;
+      }
+      .back {
+        transform: rotateY(180deg);
+      }
+    script(src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js")
+    script(src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js")
+    script(src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js")
+    script(src="/scripts/firebase.js")
+    script(src="/scripts/learn.js")
+  body(class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 min-h-screen flex flex-col items-center justify-center p-4 space-y-4")
+
+     
+    a(href="/home", class="absolute top-4 left-4 text-white hover:text-yellow-200 flex items-center text-lg")
+      svg(xmlns="http://www.w3.org/2000/svg", fill="none", viewBox="0 0 24 24", stroke="currentColor", class="w-6 h-6 mr-1")
+        path(stroke-linecap="round", stroke-linejoin="round", stroke-width="2", d="M15 19l-7-7 7-7")
+      | Back 
+
+    h1.text-3xl.font-bold.text-white Learning App
+
+    select#setsSelect(class="p-3 rounded-lg text-gray-800 bg-white shadow-md")
+      option(value="") -- Select set --
+
+    p#cardCounter.text-white.text-lg.font-medium
+
+    .card-container(class="w-full max-w-md perspective mb-4")
+      .card(id="card", class="relative w-full h-60 bg-white rounded-xl shadow-xl")
+        .card-content.front(class="absolute w-full h-full flex items-center justify-center p-6")
+          p.question.text-xl.font-semibold.text-gray-800 Question
+        .card-content.back(class="absolute w-full h-full bg-blue-100 flex items-center justify-center p-6")
+          p.answer.text-xl.font-semibold.text-blue-800 Answer 
+
+    .flex.gap-4
+      button#flipCard(class="bg-yellow-500 text-white py-2 px-4 rounded-lg hover:bg-yellow-600 transition") Show answer
+      button#nextCard(class="bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 transition") Next card

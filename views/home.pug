@@ -1,0 +1,22 @@
+doctype html
+html
+  head
+    title Home
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css")
+    script(src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js")
+    script(src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js")
+    script(src="/scripts/firebase.js")
+    script(src="/scripts/home.js")
+  
+  body(class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 min-h-screen flex items-center justify-center")
+    .bg-white.p-10.rounded-xl.shadow-xl.text-center.space-y-6
+      h1.text-4xl.font-bold.text-gray-800 Welcome!
+      p.text-lg.text-gray-600 Choose what you want to do:
+
+      .space-y-4
+        a(href="/dashboard" class="block w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-lg transition") 📚 Add and edit sets
+        a(href="/learn" class="block w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg transition") 🎓 Learn
+        a(href="/test" class="block w-full bg-purple-600 hover:bg-purple-700 text-white py-3 rounded-lg transition") 🧪 Tests
+        button#logoutBtn(type="button" class="block w-full bg-red-600 hover:bg-red-700 text-white py-3 rounded-lg transition") 🚪 Exit
